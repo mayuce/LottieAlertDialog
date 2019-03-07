@@ -114,7 +114,7 @@ alertDialog=LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_QUESTION)
 
 ### Additional Features
 
-You can use same instance without interrupt on view. If you don't set a varible to buttons or texts they'll be INVISIBLE.
+You can use same instance without interrupt on view. If you don't set a variable to buttons or texts they'll be INVISIBLE.
 
 ## Thanks
 
