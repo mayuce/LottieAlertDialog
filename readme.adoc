@@ -1,4 +1,4 @@
-# Lottie Aler Dialog
+# Lottie Alert Dialog
 
 image::https://img.shields.io/badge/version-1.0-green.svg[]
 image::https://img.shields.io/badge/minSDK-19-blue.svg[]
