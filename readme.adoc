@@ -89,7 +89,7 @@ alertDialog=LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_QUESTION)
                 {
                     override fun onClick(dialog: LottieAlertDialog) {
                     // This is the usage same instance of view
-                        alertDialog.changeVariables(LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_ERROR)
+                        alertDialog.changeVariables(LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_WARNING)
                             .setTitle("Warning")
                             .setDescription("Some warning.")
                             .setPositiveText("Okay")
