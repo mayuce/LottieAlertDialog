@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_kucuk">12sp</dimen>
+    <dimen name="text_orta">14sp</dimen>
+    <dimen name="text_buyuk">16sp</dimen>
+    <dimen name="text_cok_buyuk">18sp</dimen>
+    <dimen name="text_description">22sp</dimen>
+    <dimen name="text_title">26sp</dimen>
+
+    <dimen name="margin">20dp</dimen>
+    <dimen name="margin_">10dp</dimen>
+
+</resources>

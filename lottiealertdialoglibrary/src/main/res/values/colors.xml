@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="gray_more_light">#33e5e5e5</color>
+    <color name="gray_light">#F7F7F7</color>
+    <color name="transparent">#00ffffff</color>
+
+    <color name="tab_selected_color">#d21034</color>
+    <color name="red_toolbar">#d21034</color>
+    <color name="red_statusbar">#d21034</color>
+    <color name="red_app">#d21034</color>
+    <color name="red_statusbar_dark">#b81432</color>
+    <color name="tab_unselected_color">#96a5ae</color>
+    <color name="gray_border">#eff1f3</color>
+    <color name="gray_text">#293d51</color>
+    <color name="gray_text_disabled">#54677d</color>
+    <color name="gray_text_faded">#80555e63</color>
+</resources>

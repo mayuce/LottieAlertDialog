@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ ***********************************************************************************************************************
+  ~ Copyright (c) 2018 www.yucetasarim.com - All Right Reserved.
+  ~
+  ~ Project             : parashout_android
+  ~ Created on          : 12.02.2018 11:35
+  ~ Author              : Muhammet Ali YÜCE
+  ~ Author E-Mail       : yucee76@gmail.com
+  ~ Module              : C:/AndroidStudioProjects/Mobile/parashout_android/app/src/main/res/anim/fade_in.xml
+  ~ File Name           : fade_in.xml
+  ~ Last Modified User  : tuzlu
+  ~ Last Modified Date  : 31.01.2018 11:26
+  ~ ***********************************************************************************************************************
+  -->
+
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/linear_interpolator">
+    <alpha
+        android:duration="50"
+        android:fromAlpha="0.1"
+        android:toAlpha="1.0"
+        />
+</set>
