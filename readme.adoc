@@ -6,6 +6,8 @@ image::https://img.shields.io/badge/license-MIT-yellowgreen.svg[]
 
 This library helps you to create bunch of alert dialogs with Lottie.
 
+image::Images/alertdialog_medium.png[]
+
 ## Requirements
 
 *You must add lottie assets to your main folder first, there is a five types of alert dialog and five lottie files in there.
@@ -119,6 +121,8 @@ You can use same instance without interrupt on view. If you don't set a variable
 ## Thanks
 
 * Thanks *airbnb* for Lottie.
+
+image::Images/alertdialog2_medium.png[]
 
 [source,bourne]
 ----
