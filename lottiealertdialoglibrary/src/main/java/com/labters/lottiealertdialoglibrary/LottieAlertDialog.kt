@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -35,6 +36,12 @@ class LottieAlertDialog : AlertDialog
     private lateinit var btnPositive : Button
     private lateinit var btnNegative : Button
     private lateinit var btnNone : Button
+    private var positiveBtnColor:Int? = null
+    private var positiveTextColor:Int? = null
+    private var negativeBtnColor:Int? = null
+    private var negativeTextColor:Int? = null
+    private var noneBtnColor:Int? = null
+    private var noneTextColor:Int? = null
     private lateinit var animationFadeIn : Animation
     private lateinit var animationFadeOut: Animation
 
@@ -48,7 +55,13 @@ class LottieAlertDialog : AlertDialog
         noneText: String?,
         positiveListener: ClickListener?,
         negativeListener: ClickListener?,
-        noneListener: ClickListener?
+        noneListener: ClickListener?,
+        positiveBtnColor : Int?,
+        positiveTextColor : Int?,
+        negativeBtnColor : Int?,
+        negativeTextColor : Int?,
+        noneBtnColor : Int?,
+        noneTextColor : Int?
     ) : super(context) {
         this.mContext = context
         this.mType = type
@@ -60,6 +73,12 @@ class LottieAlertDialog : AlertDialog
         this.mPositiveListener = positiveListener
         this.mNegativeListener = negativeListener
         this.mNoneListener = noneListener
+        this.positiveBtnColor = positiveBtnColor
+        this.positiveTextColor = positiveTextColor
+        this.negativeBtnColor = negativeBtnColor
+        this.negativeTextColor = negativeTextColor
+        this.noneBtnColor = noneBtnColor
+        this.noneTextColor = noneTextColor
         animationFadeIn = AnimationUtils.loadAnimation(context, R.anim.fade_in)
         animationFadeIn.duration = 50
         animationFadeOut = AnimationUtils.loadAnimation(context, R.anim.fade_out)
@@ -80,6 +99,13 @@ class LottieAlertDialog : AlertDialog
         private var positiveListener:ClickListener? = null
         private var negativeListener:ClickListener? = null
         private var noneListener:ClickListener? = null
+        private var positiveBtnColor:Int? = null
+        private var positiveTextColor:Int? = null
+        private var negativeBtnColor:Int? = null
+        private var negativeTextColor:Int? = null
+        private var noneBtnColor:Int? = null
+        private var noneTextColor:Int? = null
+
         fun setTitle(title:String?) : Builder = apply { this.title = title ; return@apply}
         fun setDescription(description:String?) : Builder= apply { this.description = description ; return@apply}
         fun setPositiveText(positiveText:String?) : Builder= apply { this.positiveText = positiveText ; return@apply}
@@ -88,7 +114,15 @@ class LottieAlertDialog : AlertDialog
         fun setPositiveListener(positiveListener:ClickListener?) : Builder= apply { this.positiveListener = positiveListener ; return@apply}
         fun setNegativeListener(negativeListener:ClickListener?) : Builder= apply { this.negativeListener = negativeListener ; return@apply}
         fun setNoneListener(noneListener:ClickListener?): Builder = apply { this.noneListener = noneListener ; return@apply}
-        fun build() = LottieAlertDialog(context!!,type,title, description, positiveText, negativeText,noneText,positiveListener,negativeListener,noneListener)
+        fun setPositiveButtonColor(color:Int?) : Builder= apply { this.positiveBtnColor = color ; return@apply}
+        fun setPositiveTextColor(color:Int?) : Builder= apply { this.positiveTextColor = color ; return@apply}
+        fun setNegativeButtonColor(color:Int?) : Builder= apply { this.negativeBtnColor = color ; return@apply}
+        fun setNegativeTextColor(color:Int?) : Builder= apply { this.negativeTextColor = color ; return@apply}
+        fun setNoneButtonColor(color:Int?) : Builder= apply { this.noneBtnColor = color ; return@apply}
+        fun setNoneTextColor(color:Int?) : Builder= apply { this.noneTextColor = color ; return@apply}
+        fun build() = LottieAlertDialog(context!!,type,title, description, positiveText,
+            negativeText,noneText,positiveListener,negativeListener,noneListener,
+            positiveBtnColor,positiveTextColor,negativeBtnColor,negativeTextColor,noneBtnColor,noneTextColor)
 
         fun getContext() : Context? {return context}
         fun getType() : Int? { return  type}
@@ -100,6 +134,12 @@ class LottieAlertDialog : AlertDialog
         fun getPositiveListener() : ClickListener? { return  positiveListener}
         fun getNegativeListener() : ClickListener? { return  negativeListener}
         fun getNoneListener() : ClickListener? { return  noneListener}
+        fun getPositiveButtonColor() : Int? { return  positiveBtnColor}
+        fun getPositiveTextColor() : Int? { return  positiveTextColor}
+        fun getNegativeButtonColor() : Int? { return  negativeBtnColor}
+        fun getNegativeTextColor() : Int? { return  negativeTextColor}
+        fun getNoneButtonColor() : Int? { return  noneBtnColor}
+        fun getNoneTextColor() : Int? { return  noneTextColor}
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,6 +163,7 @@ class LottieAlertDialog : AlertDialog
 
     private fun setView()
     {
+        // SET VIEW
         lAnimation.startAnimation(animationFadeIn)
         if (mTitle!=null)
         {
@@ -172,6 +213,33 @@ class LottieAlertDialog : AlertDialog
         {
             btnNone.visibility=View.GONE
         }
+
+        if (positiveBtnColor!=null)
+            btnPositive.background.setColorFilter(positiveBtnColor!!,PorterDuff.Mode.MULTIPLY)
+        else
+            btnPositive.background.clearColorFilter()
+        if (positiveTextColor!=null)
+            btnPositive.setTextColor(positiveTextColor!!)
+        else
+            btnPositive.setTextColor(Color.parseColor("#000000"))
+        if (negativeBtnColor!=null)
+            btnNegative.background.setColorFilter(negativeBtnColor!!,PorterDuff.Mode.MULTIPLY)
+        else
+            btnNegative.background.clearColorFilter()
+        if (negativeTextColor!=null)
+            btnNegative.setTextColor(negativeTextColor!!)
+        else
+            btnNegative.setTextColor(Color.parseColor("#000000"))
+        if (noneBtnColor!=null)
+            btnNone.background.setColorFilter(noneBtnColor!!,PorterDuff.Mode.MULTIPLY)
+        else
+            btnNone.background.clearColorFilter()
+        if (noneTextColor!=null)
+            btnNone.setTextColor(noneTextColor!!)
+        else
+            btnNone.setTextColor(Color.parseColor("#000000"))
+
+        // TYPE CONTROL
         if (mType == DialogTypes.TYPE_LOADING)
         {
             lAnimation.setAnimation("loading.json")
@@ -200,7 +268,7 @@ class LottieAlertDialog : AlertDialog
         lAnimation.playAnimation()
     }
 
-    fun changeVariables(builder : Builder)
+    fun changeDialog(builder : Builder)
     {
         mContext= builder.getContext()!!
         mType=builder.getType()
@@ -212,6 +280,12 @@ class LottieAlertDialog : AlertDialog
         mPositiveListener=builder.getPositiveListener()
         mNegativeListener=builder.getNegativeListener()
         mNoneListener=builder.getNoneListener()
+        positiveBtnColor=builder.getPositiveButtonColor()
+        positiveTextColor=builder.getPositiveTextColor()
+        negativeBtnColor=builder.getNegativeButtonColor()
+        negativeTextColor=builder.getNegativeTextColor()
+        noneBtnColor=builder.getNoneButtonColor()
+        noneTextColor=builder.getNoneTextColor()
         lAnimation.startAnimation(animationFadeOut)
         Handler().postDelayed(Runnable { setView() },50)
     }
