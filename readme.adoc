@@ -1,12 +1,18 @@
 # Lottie Alert Dialog
 
+image:https://img.shields.io/badge/Android%20Arsenal-Lottie%20Alert%20Dialog-brightgreen.svg?style=flat["Android Arsenal", link="https://android-arsenal.com/details/1/7557"]
+
 image::https://img.shields.io/badge/version-1.1-green.svg[]
+
 image::https://img.shields.io/badge/minSDK-19-blue.svg[]
+
 image::https://img.shields.io/badge/license-MIT-yellowgreen.svg[]
 
 This library helps you to create bunch of alert dialogs with Lottie.
 
 image::Images/alertdialog_medium.png[]
+
+image::Images/showroom.gif[200,400]
 
 ## Requirements
 
