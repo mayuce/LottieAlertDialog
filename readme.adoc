@@ -1,6 +1,6 @@
 # Lottie Alert Dialog
 
-image::https://img.shields.io/badge/version-1.0-green.svg[]
+image::https://img.shields.io/badge/version-1.1-green.svg[]
 image::https://img.shields.io/badge/minSDK-19-blue.svg[]
 image::https://img.shields.io/badge/license-MIT-yellowgreen.svg[]
 
@@ -36,7 +36,7 @@ Add lines below to your *app* level build.gradle
 [source,bourne]
 ----
     implementation 'com.airbnb.android:lottie:2.7.0'
-    implementation 'com.github.mayuce:LottieAlertDialog:1.0'
+    implementation 'com.github.mayuce:LottieAlertDialog:1.1'
 ----
 
 And Sync the gradle
@@ -70,11 +70,17 @@ alertDialog=LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_QUESTION)
                 .setPositiveText("Error")
                 .setNegativeText("Warning")
                 .setNoneText("None")
+                .setPositiveButtonColor(Color.parseColor("#f44242"))
+                .setPositiveTextColor(Color.parseColor("#ffeaea"))
+                .setNegativeButtonColor(Color.parseColor("#ffbb00"))
+                .setNegativeTextColor(Color.parseColor("#0a0906"))
+                .setNoneButtonColor(Color.parseColor("#1cd3ef"))
+                .setNoneTextColor(Color.parseColor("#c407c4"))
                 // Error View
                 .setPositiveListener(object: ClickListener{
                     override fun onClick(dialog: LottieAlertDialog) {
                     // This is the usage same instance of view
-                        alertDialog.changeVariables(LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_ERROR)
+                        alertDialog.changeDialog(LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_ERROR)
                             .setTitle("Error")
                             .setDescription("Some error has happened.")
                             .setPositiveText("Okay")
@@ -91,7 +97,7 @@ alertDialog=LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_QUESTION)
                 {
                     override fun onClick(dialog: LottieAlertDialog) {
                     // This is the usage same instance of view
-                        alertDialog.changeVariables(LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_WARNING)
+                        alertDialog.changeDialog(LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_WARNING)
                             .setTitle("Warning")
                             .setDescription("Some warning.")
                             .setPositiveText("Okay")
@@ -116,7 +122,7 @@ alertDialog=LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_QUESTION)
 
 ### Additional Features
 
-You can use same instance without interrupt on view. If you don't set a variable to buttons or texts they'll be INVISIBLE.
+You can use same instance without interrupting view. If you don't set a variable to button texts, they'll be GONE.
 
 ## Thanks
 
