@@ -73,6 +73,64 @@ class MainActivity : AppCompatActivity() {
         },2000)
     }
 
+    fun customAsset(view: View){
+        alertDialog= LottieAlertDialog.Builder(this,DialogTypes.TYPE_CUSTOM, "custom.json")
+            .setTitle("Loading new stuffs ;)")
+            .setDescription("Please Wait")
+            .build()
+        alertDialog.setCancelable(false)
+        alertDialog.show()
+        Handler().postDelayed(Runnable {
+            alertDialog.changeDialog(LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_CUSTOM,"dino.json")
+                .setTitle("This is a Custom Asset")
+                .setDescription("Wanna see something more!")
+                .setPositiveText("Yeah")
+                .setNegativeText("Nah")
+                .setNoneText("None")
+                .setPositiveButtonColor(Color.parseColor("#f44242"))
+                .setPositiveTextColor(Color.parseColor("#ffeaea"))
+                .setNegativeButtonColor(Color.parseColor("#ffbb00"))
+                .setNegativeTextColor(Color.parseColor("#0a0906"))
+                .setNoneButtonColor(Color.parseColor("#1cd3ef"))
+                .setNoneTextColor(Color.parseColor("#c407c4"))
+                .setPositiveListener(object: ClickListener{
+                    override fun onClick(dialog: LottieAlertDialog) {
+                        alertDialog.changeDialog(LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_CUSTOM,"goodbye.json")
+                            .setTitle("That's bad...")
+                            .setDescription("See you next time!")
+                            .setPositiveText("Okay")
+                            .setPositiveListener(object : ClickListener{
+                                override fun onClick(dialog: LottieAlertDialog) {
+                                    dialog.dismiss()
+                                }
+                            })
+                        )
+                    }
+                })
+                .setNegativeListener(object : ClickListener
+                {
+                    override fun onClick(dialog: LottieAlertDialog) {
+                        alertDialog.changeDialog(LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_CUSTOM, "custom.json")
+                            .setTitle("Here you got")
+                            .setDescription("Loading something new.")
+                            .setPositiveText("Okay")
+                            .setPositiveListener(object : ClickListener{
+                                override fun onClick(dialog: LottieAlertDialog) {
+                                    dialog.dismiss()
+                                }
+                            }))
+                    }
+                })
+                .setNoneListener(object: ClickListener
+                {
+                    override fun onClick(dialog: LottieAlertDialog) {
+                        dialog.dismiss()
+                    }
+                })
+            )
+        }, 2000)
+    }
+
     fun onClick(view : View)
     {
         alertDialog= LottieAlertDialog.Builder(this,DialogTypes.TYPE_LOADING)

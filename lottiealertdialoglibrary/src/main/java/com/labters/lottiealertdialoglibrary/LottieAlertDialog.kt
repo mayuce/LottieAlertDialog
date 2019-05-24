@@ -1,6 +1,5 @@
 package com.labters.lottiealertdialoglibrary
 
-import android.animation.ValueAnimator
 import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
@@ -19,6 +18,7 @@ import com.airbnb.lottie.LottieDrawable
 
 class LottieAlertDialog : AlertDialog
 {
+    private var mCustomAsset:String? = null
     private var mContext : Context
     private var mType:Int?=null
     private var mTitle:String? = null
@@ -61,10 +61,12 @@ class LottieAlertDialog : AlertDialog
         negativeBtnColor : Int?,
         negativeTextColor : Int?,
         noneBtnColor : Int?,
-        noneTextColor : Int?
+        noneTextColor : Int?,
+        customAsset: String?
     ) : super(context) {
         this.mContext = context
         this.mType = type
+        this.mCustomAsset = customAsset
         this.mTitle = title
         this.mDescription = description
         this.mPositiveText = positiveText
@@ -88,8 +90,9 @@ class LottieAlertDialog : AlertDialog
 
     data class Builder(
         private val context: Context? = null,
-        private val type:Int? = null
-        )
+        private val type:Int? = null,
+        private val customAsset:String? = null
+    )
     {
         private var title:String? = null
         private var description:String? = null
@@ -122,10 +125,11 @@ class LottieAlertDialog : AlertDialog
         fun setNoneTextColor(color:Int?) : Builder= apply { this.noneTextColor = color ; return@apply}
         fun build() = LottieAlertDialog(context!!,type,title, description, positiveText,
             negativeText,noneText,positiveListener,negativeListener,noneListener,
-            positiveBtnColor,positiveTextColor,negativeBtnColor,negativeTextColor,noneBtnColor,noneTextColor)
+            positiveBtnColor,positiveTextColor,negativeBtnColor,negativeTextColor,noneBtnColor,noneTextColor,customAsset)
 
         fun getContext() : Context? {return context}
         fun getType() : Int? { return  type}
+        fun getCustomAsset() : String? { return customAsset}
         fun getTitle() : String? { return  title}
         fun getDescription() : String? { return  description}
         fun getPositiveText() : String? { return  positiveText}
@@ -167,7 +171,7 @@ class LottieAlertDialog : AlertDialog
         lAnimation.startAnimation(animationFadeIn)
         if (mTitle!=null)
         {
-            tvTitle.setText(mTitle)
+            tvTitle.text = mTitle
             tvTitle.visibility=View.VISIBLE
         }
         else
@@ -176,7 +180,7 @@ class LottieAlertDialog : AlertDialog
         }
         if (mDescription!=null)
         {
-            tvDescription.setText(mDescription)
+            tvDescription.text = mDescription
             tvDescription.visibility=View.VISIBLE
         }
         else
@@ -185,9 +189,9 @@ class LottieAlertDialog : AlertDialog
         }
         if (mPositiveText!=null)
         {
-            btnPositive.setText(mPositiveText)
+            btnPositive.text = mPositiveText
             btnPositive.visibility=View.VISIBLE
-            btnPositive.setOnClickListener(View.OnClickListener { mPositiveListener?.onClick(LottieAlertDialog@this) })
+            btnPositive.setOnClickListener { mPositiveListener?.onClick(LottieAlertDialog@this) }
         }
         else
         {
@@ -197,7 +201,7 @@ class LottieAlertDialog : AlertDialog
         {
             btnNegative.setText(mNegativeText)
             btnNegative.visibility=View.VISIBLE
-            btnNegative.setOnClickListener(View.OnClickListener { mNegativeListener?.onClick(LottieAlertDialog@this) })
+            btnNegative.setOnClickListener { mNegativeListener?.onClick(LottieAlertDialog@this) }
         }
         else
         {
@@ -207,7 +211,7 @@ class LottieAlertDialog : AlertDialog
         {
             btnNone.setText(mNoneText)
             btnNone.visibility=View.VISIBLE
-            btnNone.setOnClickListener(View.OnClickListener { mNoneListener?.onClick(LottieAlertDialog@this) })
+            btnNone.setOnClickListener { mNoneListener?.onClick(LottieAlertDialog@this) }
         }
         else
         {
@@ -265,6 +269,11 @@ class LottieAlertDialog : AlertDialog
             lAnimation.setAnimation("question.json")
             lAnimation.repeatCount=LottieDrawable.INFINITE
         }
+        else if (mType == DialogTypes.TYPE_CUSTOM)
+        {
+            lAnimation.setAnimation(mCustomAsset)
+            lAnimation.repeatCount=LottieDrawable.INFINITE
+        }
         lAnimation.playAnimation()
     }
 
@@ -272,6 +281,7 @@ class LottieAlertDialog : AlertDialog
     {
         mContext= builder.getContext()!!
         mType=builder.getType()
+        mCustomAsset=builder.getCustomAsset()
         mTitle=builder.getTitle()
         mDescription=builder.getDescription()
         mPositiveText=builder.getPositiveText()
