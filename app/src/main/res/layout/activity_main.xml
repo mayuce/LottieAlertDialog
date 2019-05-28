@@ -7,12 +7,28 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+    <Button
+            android:id="@+id/start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Start"
             android:padding="20dp"
             android:background="@drawable/background_button"
             android:onClick="onClick"
+    />
+
+    <Button
+            android:id="@+id/custom_asset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/start"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:text="Custom Aset"
+            android:padding="20dp"
+            android:background="@drawable/background_button"
+            android:onClick="customAsset"
     />
 
 </RelativeLayout>
