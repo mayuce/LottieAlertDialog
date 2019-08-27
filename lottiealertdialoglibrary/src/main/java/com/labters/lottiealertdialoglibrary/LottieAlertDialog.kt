@@ -219,10 +219,13 @@ class LottieAlertDialog : AlertDialog
         }
 
         if (positiveBtnColor!=null){
-            //This isn't working on Android 6 Devices.
-            //btnPositive.background.setColorFilter(positiveBtnColor!!,PorterDuff.Mode.MULTIPLY)
-            //This supports Android 6
-            btnNegative.setBackgroundColor(negativeBtnColor!!)
+            if(android.os.Build.VERSION.SDK_INT>android.os.Build.VERSION_CODES.M){
+                //This isn't working on Android 6 Devices.
+                btnPositive.background.setColorFilter(positiveBtnColor!!,PorterDuff.Mode.MULTIPLY)
+            }else{
+                //This supports Android 6
+                btnNegative.setBackgroundColor(negativeBtnColor!!)
+            }
         }else
             btnPositive.background.clearColorFilter()
         if (positiveTextColor!=null)
@@ -230,10 +233,13 @@ class LottieAlertDialog : AlertDialog
         else
             btnPositive.setTextColor(Color.parseColor("#000000"))
         if (negativeBtnColor!=null){
-            //This isn't working on Android 6 Devices.
-            //btnNegative.background.setColorFilter(negativeBtnColor!!,PorterDuff.Mode.MULTIPLY)
-            //This supports Android 6
-            btnNegative.setBackgroundColor(negativeBtnColor!!)
+            if(android.os.Build.VERSION.SDK_INT>android.os.Build.VERSION_CODES.M){
+                //This isn't working on Android 6 Devices.
+                btnNegative.background.setColorFilter(negativeBtnColor!!,PorterDuff.Mode.MULTIPLY)
+            }else{
+                //This supports Android 6
+                btnNegative.setBackgroundColor(negativeBtnColor!!)
+            }
         }else
             btnNegative.background.clearColorFilter()
         if (negativeTextColor!=null)
@@ -241,10 +247,13 @@ class LottieAlertDialog : AlertDialog
         else
             btnNegative.setTextColor(Color.parseColor("#000000"))
         if (noneBtnColor!=null){
-            //This isn't working on Android 6 Devices.
-            //btnNone.background.setColorFilter(noneBtnColor!!,PorterDuff.Mode.MULTIPLY)            
-            //This supports Android 6
-            btnNone.setBackgroundColor(noneBtnColor!!)
+            if(android.os.Build.VERSION.SDK_INT>android.os.Build.VERSION_CODES.M){
+                //This isn't working on Android 6 Devices.
+                btnNone.background.setColorFilter(noneBtnColor!!,PorterDuff.Mode.MULTIPLY)            
+            }else{
+                //This supports Android 6
+                btnNone.setBackgroundColor(noneBtnColor!!)
+            }
         }else
             btnNone.background.clearColorFilter()
         if (noneTextColor!=null)
