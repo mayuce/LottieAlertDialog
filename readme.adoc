@@ -126,6 +126,22 @@ alertDialog=LottieAlertDialog.Builder(parentActivity,DialogTypes.TYPE_QUESTION)
             alertDialog.show()
 ----
 
+Custom Asset:
+
+You need add your custom json in "app/src/main/assets' path
+
+----
+  val alertDialog = LottieAlertDialog.Builder(this,DialogTypes.TYPE_CUSTOM,"custom.json")
+                    .setTitle("Custom Assert")
+                    .setDescription("Would you like to see ?")
+                    .setPositiveText("Ok")
+                    .setPositiveListener(object : ClickListener {
+                        override fun onClick(dialog: LottieAlertDialog) {}
+                    })
+                    .build()
+                alertDialog?.show()
+----
+
 ### Additional Features
 
 You can use same instance without interrupting view. If you don't set a variable to button texts, they'll be GONE.
